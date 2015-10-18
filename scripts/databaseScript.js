@@ -1,7 +1,9 @@
 $(document).ready(function () {
+    
+    var GROUP_ID = "Dubhacks 2015"
 
     function submitMessage() {
-        fb.child("UID").child("GROUPNAME").push({
+        fb.child(GROUP_ID).child("messages").push({
             name: "USERNAME",
             msg: $("#messageInput").val(),
             time: Date.now()

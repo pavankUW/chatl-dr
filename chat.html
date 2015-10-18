@@ -4,6 +4,11 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-orange.min.css" />
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="styles/chatStyle.css" type="text/css" />
 </head>
 
 <body>
@@ -12,9 +17,15 @@
         <p class="inMessage"><b>Lynsey</b> Shut up Pavan</p>
         <p class="outMessage">Yeah Pavan you're dumb.</p>
     </div>
-    <form id="chatInput">
-        <textarea id="messageInput" default="Type a Message..."></textarea>
-        <button type="submit" id="submitInput">SUBMIT</button>
+    <form id="messageInputForm">
+        <div id="messageInputContainer" class="mdl-textfield mdl-js-textfield">
+            <textarea id="messageInput" class="mdl-textfield__input" type="text" rows="1"></textarea>
+            <label class="mdl-textfield__label" for="sample5">Type a Message</label>
+            <button id="submitInput" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect" type="submit">
+                <i class="material-icons">send</i>
+            </button>
+        </div>
+
     </form>
 
     <script>
