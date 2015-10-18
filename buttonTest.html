@@ -21,9 +21,9 @@
     </form>
 
     <script>
-        var chatRef = new Firebase("https://chatl-dr.firebaseio.com");
+        var fb = new Firebase("https://chatl-dr.firebaseio.com");
 
-        var auth = new FirebaseSimpleLogin(chatRef, function (error, user) {
+        var auth = new FirebaseSimpleLogin(fb, function (error, user) {
             if (error) {
                 console.log(error);
                 //login error
