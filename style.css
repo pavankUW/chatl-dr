@@ -9,8 +9,9 @@
 }
 
 #title {
-	font-size: 150px;
+	font-size: 100px;
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: white;
 }
 
 #container {
