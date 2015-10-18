@@ -4,7 +4,6 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
-    <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
 </head>
 
 <body>
@@ -22,26 +21,6 @@
 
     <script>
         var fb = new Firebase("https://chatl-dr.firebaseio.com");
-
-        var auth = new FirebaseSimpleLogin(fb, function (error, user) {
-            if (error) {
-                console.log(error);
-                //login error
-            } else if (user) {
-                console.log('User ID: ' + user.uid);
-            } else {
-                console.log('Not logged in');
-                //logged out
-            }
-        });
-        $(function () {
-            $('#FacebookAuthentication').click(function () {
-                auth.login('facebook', {
-                    rememberMe: true,
-                    scope: 'email,user_likes'
-                });
-            });
-        });
     </script>
     <script type="text/javascript" src="scripts/databaseScript.js"></script>
 
