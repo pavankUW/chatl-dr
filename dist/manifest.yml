@@ -4,7 +4,7 @@ declared-services:
     plan: standard
 applications:
 - services:
-  - concept-insights-uw
+  - concept-insights-chatldr
   name: concept-insights-uw
   command: node app.js
   path: .

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-orange.min.css" />
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="styles/chatStyle.css" type="text/css" />
+</head>
+
+<body>
+    <div id="topBar">
+        <button id="backButton" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">arrow_back</i>
+        </button>
+        <button id="groupNameButton" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            Bob6<i class="material-icons">keyboard_arrow_down</i>
+        </button>
+        
+        <button id="summaryButton" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">speaker_notes</i>
+        </button>
+    </div>
+    <div id="messages">
+    </div>
+    <form id="messageInputForm">
+        <div id="messageInputContainer">
+            <textarea id="messageInput" type="text" rows="1"></textarea>
+            <button id="submitInput" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect" type="button">
+                <i class="material-icons">send</i>
+            </button>
+        </div>
+
+    </form>
+
+    <script>
+        var fb = new Firebase("https://chatl-dr.firebaseio.com");
+    </script>
+    <script type="text/javascript" src="scripts/databaseScript.js"></script>
+
+</body>
+
+</html>

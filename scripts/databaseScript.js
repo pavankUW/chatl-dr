@@ -1,4 +1,5 @@
 function getParam(name) {
+	
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
@@ -6,11 +7,11 @@ function getParam(name) {
 }
 
 $(document).ready(function () {
-
+	var PREFIX = "https://gateway.watsonplatform.net/concept-insights/api/v2"
     var GROUP_ID = getParam("room");
     var NAME_ID = getParam("name");
     var ACTION_ID = getParam("action");
-
+	
     fb.child(GROUP_ID).child("users").child(NAME_ID).set("true");
     fb.child(GROUP_ID).child("messages").push({
         type: "status",
@@ -34,12 +35,18 @@ $(document).ready(function () {
     });
 
     function submitMessage() {
+		
         fb.child(GROUP_ID).child("messages").push({
             name: NAME_ID,
             msg: $("#messageInput").val(),
             time: Date.now()
         });
         $("#messageInput").val("");
+		var corpus = "chatldr.me/logs/Cat6.txt";
+		var account_id = "aaronjhnstn7@gmail.com"
+		var url = PREFIX + "/v2/corpora/" +account_id +"/" +corpus +"/related_concepts"
+		var concepts = $.get(url);
+		console.log(concepts);
     }
 
     function loadMessages(snapshot) {
