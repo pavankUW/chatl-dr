@@ -24,9 +24,9 @@ $(document).ready(function () {
 
     $("#messageInput").keydown(function (e) {
         if (e.keyCode == 13) {
+            e.preventDefault();
             submitMessage();
         }
-
     });
 
     $("#submitInput").click(submitMessage);
