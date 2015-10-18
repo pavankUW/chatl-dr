@@ -11,10 +11,9 @@ $(document).ready(function () {
 
         fb.once("value", function (snapshot) {
             if (snapshot.child(room).exists()) {
-                alert("NO");
                 $("body").append('<div class="errorPopup">That room already exists!</div>');
             } else {
-                alert("Trying to join...");
+                fb.child(room).set({pass: pass});
                 tryJoin(name, room, pass, query);
             }
         });
@@ -23,9 +22,19 @@ $(document).ready(function () {
 
     function tryJoin(name, room, pass, query) {
 
+        fb.once("value", function (snapshot) {
+            if (!snapshot.child(room).exists()) {
+                $("body").append('<div class="errorPopup">That room does not exist!</div>');
+            } else if (snapshot.child(room).child("users").child(name).exists()) {
+                $("body").append('<div class="errorPopup">That name is already in use!</div>');
+            } else if (snapshot.child(room).child("pass").val() != pass) {
+                $("body").append('<div class="errorPopup">Incorrect Password!</div>');
+            } else {
+                var userhistory = snapshot.child(room).child("users").child(name).exists();
+                window.location.href = query;
+            }
+        });
 
-
-        window.location.href = query;
     }
 
     $('#Create').click(function () {

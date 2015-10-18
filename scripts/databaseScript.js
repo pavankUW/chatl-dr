@@ -11,7 +11,9 @@ $(document).ready(function () {
     var NAME_ID = getParam("name");
     var ACTION_ID = getParam("action");
     
+    fb.child(GROUP_ID).child("userhistory").child(NAME_ID).set(ACTION_ID);
     fb.child(GROUP_ID).child("users").child(NAME_ID).set(ACTION_ID);
+    
     $("#groupNameButton").html(GROUP_ID + '<i class="material-icons">keyboard_arrow_down</i>');
 
     function submitMessage() {
