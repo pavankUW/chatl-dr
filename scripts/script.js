@@ -36,7 +36,7 @@ $(document).ready(function () {
         fb.once("value", function (snapshot) {
             if (!snapshot.child(room).exists()) {
                 throwError("That room doesn't exist.");
-            } else if (snapshot.child(room).child("users").child(name).exists()) {
+            } else if (snapshot.child(room).child("users").child(name).val() == "true") {
                 throwError("That name is already in use.");
             } else if (snapshot.child(room).child("pass").val() != pass) {
                 throwError("Incorrect Password.");
