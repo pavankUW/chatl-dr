@@ -6,14 +6,25 @@ function getParam(name) {
 }
 
 $(document).ready(function () {
+    
+    $("#popup").fadeOut(0);
+
+    function throwError(message) {
+        $("#errorText").html(message);
+        $(".errorPopup").animate({"-webkit-transform": "translate(0px, 0px)"}, 300);
+        $("#popup").fadeIn(200);
+    }
+    
 
     function tryCreate(name, room, pass, query) {
 
         fb.once("value", function (snapshot) {
             if (snapshot.child(room).exists()) {
-                $("body").append('<div class="errorPopup">That room already exists!</div>');
+                throwError("That room already exists.");
             } else {
-                fb.child(room).set({pass: pass});
+                fb.child(room).set({
+                    pass: pass
+                });
                 tryJoin(name, room, pass, query);
             }
         });
@@ -24,17 +35,21 @@ $(document).ready(function () {
 
         fb.once("value", function (snapshot) {
             if (!snapshot.child(room).exists()) {
-                $("body").append('<div class="errorPopup">That room does not exist!</div>');
+                throwError("That room doesn't exist.");
             } else if (snapshot.child(room).child("users").child(name).exists()) {
-                $("body").append('<div class="errorPopup">That name is already in use!</div>');
+                throwError("That name is already in use.");
             } else if (snapshot.child(room).child("pass").val() != pass) {
-                $("body").append('<div class="errorPopup">Incorrect Password!</div>');
+                throwError("Incorrect Password.");
             } else {
                 window.location.href = query;
             }
         });
 
     }
+    
+    $("#close").click(function() {
+        $("#popup").fadeOut(200);
+    });
 
     $('#Create').click(function () {
         var Name = ($('#Name').val());

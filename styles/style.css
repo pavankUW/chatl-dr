@@ -119,3 +119,10 @@ video#bgvid {
     background: url(backgroundvideo.jpg) no-repeat;
     background-size: cover; 
 }
+
+#loginContainer {
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.5);
+}
