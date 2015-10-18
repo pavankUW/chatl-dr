@@ -30,7 +30,6 @@ $(document).ready(function () {
             } else if (snapshot.child(room).child("pass").val() != pass) {
                 $("body").append('<div class="errorPopup">Incorrect Password!</div>');
             } else {
-                var userhistory = snapshot.child(room).child("users").child(name).exists();
                 window.location.href = query;
             }
         });
