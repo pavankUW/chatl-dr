@@ -4,25 +4,9 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+	 <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
 </head>
 <body>
-	<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1510085565970015',
-      xfbml      : true,
-      version    : 'v2.4'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
     <button id="FacebookAuthentication">Login with Facebook</button>
     <br/>
     <div id="messages">
@@ -36,7 +20,29 @@
     </form>
 
     <script>
-        var fb = new Firebase("https://chatl-dr.firebaseio.com");
+	var chatRef = new Firebase("https://chatl-dr.firebaseio.com");
+	
+	alert("hello");
+	
+	var auth = new FirebaseSimpleLogin(chatRef, function(error,user){
+			  if (error) {
+				console.log(error);
+				//login error
+			  } else if(user) {
+				console.log('User ID: ' + user.uid) ;
+			  }else{
+				console.log('Not logged in');
+			  //logged out
+			  }
+		});
+$(function(){	
+	$('#FacebookAuthentication').click(function() {		
+		auth.login('facebook',{
+			rememberMe: true,
+			scope: 'email,user_likes'
+		});
+	});
+});        
     </script>
     <script type="text/javascript" src="databaseScript.js"></script>
     <script type="text/javascript" src="authenticationScript.js"></script>
