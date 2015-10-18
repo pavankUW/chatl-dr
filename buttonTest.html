@@ -3,6 +3,7 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
 </head>
 
 <body>
@@ -18,8 +19,12 @@
         <button id="submitInput">SUBMIT</button>
     </form>
 
-    <script src="authenticationScript.js"></script>
-    <script src="databaseScript.js"></script>
+    <script>
+        var fb = new Firebase("https://chatl-dr.firebaseio.com");
+    </script>
+    <script type="text/javascript" src="databaseScript.js"></script>
+    <script type="text/javascript" src="authenticationScript.js"></script>
+
 </body>
 
 </html>

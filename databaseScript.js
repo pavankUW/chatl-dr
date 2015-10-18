@@ -1,10 +1,11 @@
-<script type="text/javascript">
-    var fb = new Firebase("https://chatl-dr.firebaseio.com/");
-    fb.set({
-        title: "hello",
-        users: "yuh"
+$(document).ready(function () {
+
+    $("#submitInput").click(function () {
+        
+        fb.set({
+            pag: "mag",
+            rag: "stag"
+        });
+
     });
-    $('#FacebookAuthentication').click(function runSort() {
-        alert("hello");
-    });
-</script>
+});
