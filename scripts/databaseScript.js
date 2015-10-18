@@ -12,11 +12,25 @@ $(document).ready(function () {
     var ACTION_ID = getParam("action");
 
     fb.child(GROUP_ID).child("users").child(NAME_ID).set("true");
+    fb.child(GROUP_ID).child("messages").push({
+        type: "status",
+        name: NAME_ID,
+        msg: " has entered the chat.",
+        time: Date.now()
+    });
+
+    $("#peopleList").slideUp(0);
 
     $("#groupNameButton").html(GROUP_ID + '<i class="material-icons">keyboard_arrow_down</i>');
 
     $(window).unload(function () {
         fb.child(GROUP_ID).child("users").child(NAME_ID).set("false");
+        fb.child(GROUP_ID).child("messages").push({
+            type: "status",
+            name: NAME_ID,
+            msg: " has left the chat.",
+            time: Date.now()
+        });
     });
 
     function submitMessage() {
@@ -40,15 +54,32 @@ $(document).ready(function () {
             $("body").attr("style", "overflow: hidden;");
             $("body").append('<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: red; text-align: center; color: white; z-index: 1000;"><h1>' + snapshot.child("alert").val() + '</h1></div>')
         } else {
-            if (NAME_ID == snapshot.child("name").val()) {
+            if(snapshot.child("type").val() == "status") {
+                if (NAME_ID == snapshot.child("name").val()) {
+                $("#messages").append('<i><p class="outMessage">' + snapshot.child("name").val() + ' ' + snapshot.child("msg").val() + '</p></i>');
+            } else {
+                $("#messages").append('<i><p class="inMessage">' + snapshot.child("name").val() + ' ' + snapshot.child("msg").val() + '</p></i>');
+            }
+            } else {
+                if (NAME_ID == snapshot.child("name").val()) {
                 $("#messages").append('<p class="outMessage">' + snapshot.child("msg").val() + '</p>');
             } else {
                 $("#messages").append('<p class="inMessage"><b>' + snapshot.child("name").val() + '</b> ' + snapshot.child("msg").val() + '</p>');
             }
+            }
+            
             $("#messages").stop();
             $("#messages").animate({
                 scrollTop: $("#messages")[0].scrollHeight
             }, 400);
+        }
+    }
+
+    function updatePeople(snapshot) {
+        if (snapshot.val() == "true") {
+            $("#peopleList").append('<p id="' + snapshot.key().replace(/\s+/g, '') + '">' + snapshot.key() + '</p>');
+        } else {
+            $("#peopleList > #" + snapshot.key().replace(/\s+/g, '')).remove();
         }
     }
 
@@ -62,12 +93,24 @@ $(document).ready(function () {
 
     $("#submitInput").click(submitMessage);
 
+    $("#groupNameButton").click(function () {
+        $("#peopleList").slideToggle(200);
+    });
+
     $("#backButton").click(function () {
         window.location.href = "http://chatldr.me";
     });
 
     fb.child(GROUP_ID).child("messages").on("child_added", function (snapshot, prevChildKey) {
         loadMessages(snapshot);
+    });
+
+    fb.child(GROUP_ID).child("users").on("child_added", function (snapshot) {
+        updatePeople(snapshot);
+    });
+
+    fb.child(GROUP_ID).child("users").on("child_changed", function (snapshot) {
+        updatePeople(snapshot);
     });
 
 });

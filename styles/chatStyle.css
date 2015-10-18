@@ -43,16 +43,15 @@ body {
 
 #peopleList {
     position: absolute;
-    display: inline;
     background-color: white;
     z-index: 0;
-    width: 200px;
-    min-width: 300px;
+    width: 300px;
     top: 8vh;
-    left: calc(50vw - 100px);
-    height: 8vh;
+    left: calc(50vw - 150px);
     box-shadow: 0px 4px 10px #CCC;
     margin: 0;
+    padding: 0;
+    padding-top: 20px;
 }
 
 #messages {
