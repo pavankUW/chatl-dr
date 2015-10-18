@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
-	<script src="script.js"></script>
+	<script src="scripts/script.js"></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-orange.min.css" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -30,15 +30,16 @@
         <div id="header">
         <h1 id="title">Chatl;dr</h1>
 		<div class="mdl-textfield mdl-js-textfield">
-			<input id="Name" type="textbox" value="Name" onclick="if (this.value=='Name') this.value='';"/>
-			</br>
-			</br>
-			</br>
-			<input id="Room" type="textbox" value="Room" onclick="if (this.value=='Room') this.value='';"/>
-			</br>
-			</br>
-			</br>
-			<input id="Password" type="textbox" value="Password" onclick="if (this.value=='Password') this.value='';"/>
+			<input class="mdl-textfield__input" type="text" id="Name" />
+			<label class="mdl-textfield__label" for="sample1">Name</label>
+		</div>
+		<div class="mdl-textfield mdl-js-textfield">
+			<input class="mdl-textfield__input" type="text" id="Room" />
+			<label class="mdl-textfield__label" for="sample2">Room Name</label>
+		</div>
+		<div class="mdl-textfield mdl-js-textfield">
+			<input class="mdl-textfield__input" type="text" id="Pass" />
+			<label class="mdl-textfield__label" for="sample3">Password</label>
 		  </div>  
 		  <div id ="IndexButtons">
           <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="Create">Create</button>
@@ -49,11 +50,20 @@
 
     <script>
 		$('#Create').click(function(){
-			alert("hello");
+			var Name = ($('#Name').val());
+			var Room = ($('#Room').val())
+			var Pass =($('#Pass').val())
+			var x = "http://Chatldr.me/chat.html?action=create?name=" + Name + "?room="+ Room + "?pass=" + Pass ;
+			console.log(x);
+			window.location.href = x;
 		});
 		$('#Join').click(function(){
-			alert("hello");
+			var Name = ($('#Name').val());
+			var Room = ($('#Room').val())
+			var Pass =($('#Pass').val())
 		});
+            
+		//
     </script>
 
 </body>
