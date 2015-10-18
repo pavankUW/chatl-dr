@@ -18,9 +18,26 @@ body{
 	line-height: 8vh;
 }
 
+#backButton {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: white;
+}
+
 #header {
 	margin: auto;
 	text-align: center;
+}
+
+#groupNameButton {
+    height: 8vh;
+    line-height: 8vh;
+    color: white;
+    margin: 0px;
+    font-size: 5vh;
+    text-transform: none;
+    font-weight: 500;
 }
 
 #title {
@@ -103,6 +120,24 @@ h4 {
     top: 2vh;
     left: 47vw;
     font-size: 40px
+}
+
+#summarycontainer {
+    text-align: center;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#summaryhead {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#summarysubtitle {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #3f51b5;
+}
+
+#summarylist {
+    list-style-type: disc;
 }
 
 video#bgvid { 
