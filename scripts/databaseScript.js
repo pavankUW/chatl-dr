@@ -35,6 +35,7 @@ $(document).ready(function () {
             } else {
                 $("#messages").append('<p class="inMessage"><b>' + snapshot.child("name").val() + '</b> ' + snapshot.child("msg").val() + '</p>');
             }
+            $("#messages").scrollTop($("#messages")[0].scrollHeight);
         }
     }
 
