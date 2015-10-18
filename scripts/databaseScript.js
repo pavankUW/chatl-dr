@@ -44,7 +44,7 @@ $(document).ready(function () {
         $("#messageInput").val("");
 		var corpus = "chatldr.me/logs/Cat6.txt";
 		var account_id = "aaronjhnstn7@gmail.com"
-		var url = PREFIX + "/v2/corpora/" +account_id +"/" +corpus +"/related_concepts"
+		var url = PREFIX + "/corpora/" +account_id +"/" +corpus +"/related_concepts"
 		var concepts = $.get(url);
 		console.log(concepts);
     }
