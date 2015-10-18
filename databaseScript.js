@@ -11,9 +11,12 @@ $(document).ready(function () {
 
     function loadMessages(snapshot) {
         if (snapshot.child("cmd").val() == "REFRESH") {
-            location.reload();
+            if(Date.now() < snapshot.child("expire").val()) {
+                location.reload(false);
+            }
         } else if (snapshot.child("cmd").val() == "ALERT") {
-            $("body").append('<div style="width: 100%; height: 100%; background-color: red; color: white; z-index: 1000;">' + snapshot.child("alert").val() + '</div>')
+            $("body").attr("style", "overflow: hidden;");
+            $("body").append('<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: red; text-align: center; color: white; z-index: 1000;"><h1>' + snapshot.child("alert").val() + '</h1></div>')
         } else {
             $("#messages").append('<p class="inMessage"><b>' + snapshot.child("name").val() + '</b> ' + snapshot.child("msg").val() + '</p>');
         }
