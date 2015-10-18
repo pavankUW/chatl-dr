@@ -36,6 +36,15 @@
 
 }
 
+p {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: solid 1px #66666c;
+    box-shadow: 0px 5px 10px -5px #888888;
+}
 
 video#bgvid { 
     position: fixed;
