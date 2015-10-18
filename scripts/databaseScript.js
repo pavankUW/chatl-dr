@@ -11,6 +11,8 @@ $(document).ready(function () {
     var NAME_ID = getParam("name");
     var PASS_ID = getParam("pass");
     var JOIN_TRUE = getParam("action");
+    
+    $("#groupName").html(GROUP_ID);
 
     function submitMessage() {
         fb.child(GROUP_ID).child("messages").push({
@@ -35,7 +37,8 @@ $(document).ready(function () {
             } else {
                 $("#messages").append('<p class="inMessage"><b>' + snapshot.child("name").val() + '</b> ' + snapshot.child("msg").val() + '</p>');
             }
-            $("#messages").scrollTop($("#messages")[0].scrollHeight);
+            $("#messages").stop();
+            $("#messages").animate({scrollTop: $("#messages")[0].scrollHeight}, 400);
         }
     }
 
