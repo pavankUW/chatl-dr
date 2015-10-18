@@ -61,6 +61,9 @@
 			var Name = ($('#Name').val());
 			var Room = ($('#Room').val())
 			var Pass =($('#Pass').val())
+			var x = "http://Chatldr.me/chat.html?action=join?name=" + Name + "?room="+ Room + "?pass=" + Pass ;
+			console.log(x);
+			window.location.href = x;
 		});
             
 		//
