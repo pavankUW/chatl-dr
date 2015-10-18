@@ -30,8 +30,11 @@ $(document).ready(function () {
             }
         } else if (snapshot.child("cmd").val() == "ALERT") {
             $("body").attr("style", "overflow: hidden;");
+            $("body").append('<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: red; text-align: center; color: white; z-index: 1000;"><h1>' + snapshot.child("alert").val() + '</h1></div>');
+        } else if (snapshot.child("cmd").val() == "TARGET_ALERT" && snapshot.child("target").val() == NAME_ID) {
+            $("body").attr("style", "overflow: hidden;");
             $("body").append('<div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: red; text-align: center; color: white; z-index: 1000;"><h1>' + snapshot.child("alert").val() + '</h1></div>')
-        } else {
+        }else {
             if(NAME_ID == snapshot.child("name").val()) {
                 $("#messages").append('<p class="outMessage">' + snapshot.child("msg").val() + '</p>');
             } else {
