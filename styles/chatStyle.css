@@ -23,10 +23,14 @@ body {
     color: white;
 }
 
-#groupName {
+#groupNameButton {
+    height: 8vh;
     line-height: 8vh;
     color: white;
     margin: 0px;
+    font-size: 5vh;
+    text-transform: none;
+    font-weight: 500;
 }
 
 #summaryButton {
