@@ -25,7 +25,10 @@
 	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	color: white;
 }
-
+#indexButtons{
+	display: inline-block;
+	
+}
 #container {
 	position: relative;
 	height: 100vh;
