@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
-	<script src="scripts/script.js"></script>
+    <script src="scripts/script.js"></script>
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-orange.min.css" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -28,46 +28,30 @@
 
     <div id="container">
         <div id="header">
-        <h1 id="title">Chatl;dr</h1>
-		<div class="mdl-textfield mdl-js-textfield">
-			<input class="mdl-textfield__input" type="text" id="Name" />
-			<label class="mdl-textfield__label" for="sample1">Name</label>
-		</div>
-		<div class="mdl-textfield mdl-js-textfield">
-			<input class="mdl-textfield__input" type="text" id="Room" />
-			<label class="mdl-textfield__label" for="sample2">Room Name</label>
-		</div>
-		<div class="mdl-textfield mdl-js-textfield">
-			<input class="mdl-textfield__input" type="password" id="Pass" />
-			<label class="mdl-textfield__label" for="sample3">Password</label>
-		  </div>  
-		  <div id ="IndexButtons">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="Create">Create</button>
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="Join">Join</button>
-		  </div>
+            <h1 id="title">Chatl;dr</h1>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="Name" />
+                <label class="mdl-textfield__label" for="sample1">Name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="Room" />
+                <label class="mdl-textfield__label" for="sample2">Room Name</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="password" id="Pass" />
+                <label class="mdl-textfield__label" for="sample3">Password</label>
+            </div>
+            <div id="IndexButtons">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="Create">Create</button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="Join">Join</button>
+            </div>
         </div>
     </div>
 
     <script>
-		$('#Create').click(function(){
-			var Name = ($('#Name').val());
-			var Room = ($('#Room').val())
-			var Pass =($('#Pass').val())
-			var x = "http://Chatldr.me/chat.html?action=create&name=" + Name + "&room="+ Room + "&pass=" + Pass ;
-			console.log(x);
-			window.location.href = x;
-		});
-		$('#Join').click(function(){
-			var Name = ($('#Name').val());
-			var Room = ($('#Room').val())
-			var Pass =($('#Pass').val())
-			var x = "http://Chatldr.me/chat.html?action=join&name=" + Name + "&room="+ Room + "&pass=" + Pass ;
-			console.log(x);
-			window.location.href = x;
-		});
-            
-		//
+        var fb = new Firebase("https://chatl-dr.firebaseio.com");
     </script>
+    <script type="text/javascript" src="scripts/script.js"></script>
 
 </body>
 

@@ -9,10 +9,10 @@ $(document).ready(function () {
     
     var GROUP_ID = getParam("room");
     var NAME_ID = getParam("name");
-    var PASS_ID = getParam("pass");
-    var JOIN_TRUE = getParam("action");
+    var ACTION_ID = getParam("action");
     
-    $("#groupName").html(GROUP_ID);
+    fb.child(GROUP_ID).child("users").child(NAME_ID).set(ACTION_ID);
+    $("#groupNameButton").html(GROUP_ID + '<i class="material-icons">keyboard_arrow_down</i>');
 
     function submitMessage() {
         fb.child(GROUP_ID).child("messages").push({
