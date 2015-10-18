@@ -8,6 +8,11 @@
 	text-align: center;
 }
 
+#title {
+	font-size: 150px;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
 #container {
 	position: relative;
 	height: 100vh;
