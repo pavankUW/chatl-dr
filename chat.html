@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<title>Chatl;dr</title>
-		
-		<link rel="stylesheet" href="style.css">
-		<style type="text/css"></style>
-		
-		<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-pink.min.css">
-		<script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"></script>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		
-		<script type="text/javascript"></script>
-		<script src="script.js"></script>
-		
-		<title>chat</title>
-	</head>
 
-	<body>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase-simple-login.js"></script>
+</head>
 
-		<div id="main">
-			<div class="container">
-			
-				<div id="header">
-					<div id="name">
-						<h1>Chatl;dr</h1>
-					</div>
-					<ul id="navbar">
-						<li><a href="chat.html">CHAT</a></li>
-						<li><a href="summary.html">SUMMARY</a></li>
-					</ul>
-					<div style="clear:both"></div>
-				</div><!--header-->
-		 
-				<div id="content">
-					<h2>Hi!</h2>
-				</div><!--content-->
-				
-			</div><!--container-->
-		</div><!--main-->
-    
-		<div id="footer">
-			<div class="container">
-			</div><!--container-->
-		</div><!--footer-->
+<body>
+    <button id="FacebookAuthentication">Login with Facebook</button>
+    <br/>
+    <div id="messages">
+        <p class="inMessage"><b>Pavan</b> Hello!</p>
+        <p class="inMessage"><b>Lynsey</b> Shut up Pavan</p>
+        <p class="outMessage">Yeah Pavan you're dumb.</p>
+    </div>
+    <form id="chatInput">
+        <textarea id="messageInput" default="Type a Message..."></textarea>
+        <button type="submit" id="submitInput">SUBMIT</button>
+    </form>
 
-		
-	</body>
+    <script>
+        var fb = new Firebase("https://chatl-dr.firebaseio.com");
+
+        var auth = new FirebaseSimpleLogin(fb, function (error, user) {
+            if (error) {
+                console.log(error);
+                //login error
+            } else if (user) {
+                console.log('User ID: ' + user.uid);
+            } else {
+                console.log('Not logged in');
+                //logged out
+            }
+        });
+        $(function () {
+            $('#FacebookAuthentication').click(function () {
+                auth.login('facebook', {
+                    rememberMe: true,
+                    scope: 'email,user_likes'
+                });
+            });
+        });
+    </script>
+    <script type="text/javascript" src="scripts/databaseScript.js"></script>
+<!--    <script type="text/javascript" src="authenticationScript.js"></script>-->
+
+</body>
+
+</html>

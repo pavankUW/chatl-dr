@@ -27,6 +27,7 @@ $(document).ready(function () {
             e.preventDefault();
             submitMessage();
         }
+
     });
 
     $("#submitInput").click(submitMessage);
