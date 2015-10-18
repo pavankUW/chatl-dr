@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
-	<body>
-		<button id='FacebookAuthentication'>Login with Facebook</button>
-	</body>
-	<script src="authenticationScript.js"></script>
-	<script src="databaseScript.js"></script>
+
+<body>
+    <button id="FacebookAuthentication">Login with Facebook</button>
+    <br/>
+    <div id="messages">
+        <p class="inMessage"><b>Pavan</b> Hello!</p>
+        <p class="inMessage"><b>Lynsey</b> Shut up Pavan</p>
+        <p class="outMessage">Yeah Pavan you're dumb.</p>
+    </div>
+    <form id="chatInput">
+        <textarea id="messageInput" default="Type a Message..."></textarea>
+        <button id="submitInput">SUBMIT</button>
+    </form>
+
+    <script src="authenticationScript.js"></script>
+    <script src="databaseScript.js"></script>
+</body>
+
 </html>
